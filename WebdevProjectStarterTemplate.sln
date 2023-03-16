@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.4.33403.182
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebdevProjectStarterTemplate", "WebdevProjectStarterTemplate\WebdevProjectStarterTemplate.csproj", "{97DBD3BC-6CCC-47C5-B8A2-1A17F8CF36D5}"
 EndProject
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {CE4E1C86-8D92-4962-8376-B2CFE245A237}
+		SolutionGuid = {A69D895A-9026-448B-B6F6-30AA8A714C5A}
 	EndGlobalSection
 EndGlobal
