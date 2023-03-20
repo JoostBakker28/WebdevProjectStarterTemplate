@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\WebdevProjectStarterTemplate",
+    "\\WebdevProjectStarterTemplate\\Pages"
   ],
-  "SelectedNode": "\\WebdevProjectStarterTemplate.sln",
+  "SelectedNode": "\\WebdevProjectStarterTemplate\\Pages\\Hoofdmenu.cshtml",
   "PreviewInSolutionExplorer": false
 }

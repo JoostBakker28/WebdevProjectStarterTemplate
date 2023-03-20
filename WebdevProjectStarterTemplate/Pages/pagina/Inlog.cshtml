@@ -5,12 +5,14 @@
  
 }
 
-<div class="container">
-<label><b>Gebruikersnaam</b></label>
-<input type="text" placeholder="Gebruikersnaam" name="gebruikersnaam"/>
+<div class = "Inlog">
+<form method="post">
+	<label class="form-label">Email</label>
+	<input class="form-control" width="100px" asp-for="Email"/>
+	<label class="form-label">Wachtwoord:</label>
+	<input class="form-control" width="100px" type="password" asp-for="Wachtwoord" />
+	<button class="btn-primary" type="submit">Log in</button>
+    <button class="btn-primary" type="submit" asp-action="NaarBestellen">Bestellen</button>
+
+</form>
 </div>
-<div class="container">
-    <label><b>Wachtwoord</b></label>
-    <input type="password" placeholder="Wachtwoord" name="wachtwoord"/>
-</div>
-<button type="submit" name="LogIn">login</button>
