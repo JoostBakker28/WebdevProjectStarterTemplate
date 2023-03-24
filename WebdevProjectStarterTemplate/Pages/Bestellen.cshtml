@@ -1,28 +1,30 @@
 ﻿@page
 @using WebdevProjectStarterTemplate.Models
 @using WebdevProjectStarterTemplate.Classes;
-@model Tafel
-
 <div>
     <h1>
         Bestellen
     </h1>
 </div>
 
-@{
-    TafelNaam selectedTafel = Model?.tafelnaam;
-}
 
-@Html.DropDownListFor(m => m.tafelnaam,
-    new SelectList(Enum.GetValues(typeof(TafelNaam))))
+<form> 
+    <label for="tafel">Selecteer uw tafel</label>
+<select id="TafelKiezen" name="TafelKiezen">
+    <option value="Tafel1">Tafel 1</option>
+    <option value="Tafel2">Tafel 2</option>
+    <option value="Tafel3">Tafel 3</option>
+    <option value="Tafel4">Tafel 4</option>
+    <option value="Tafel5">Tafel 5</option>
+    <option value="Tafel6">Tafel 6</option>
+    <option value="Tafel7">Tafel 7</option>
+    <option value="Tafel8">Tafel 8</option>
+    <option value="Tafel9">Tafel 9</option>
+    <option value="Tafel10">Tafel 10</option>
+</select>
+<button type="button" formmethod="post" id="TafelBevestigen" >Bevestig tafel</button>
+</form>
 
-<p>You have selected: @selectedTafel</p>
-
-<script>
-    // Set the selected option in the dropdown list
-    var selectedValue = "@selectedTafel";
-    $("select[name='tafelnaam'] option[value='" + selectedValue + "']").prop("selected", true);
-</script>
 
 
 

@@ -6,10 +6,12 @@ namespace WebdevProjectStarterTemplate.Pages
 {
     public class BestellenModel : PageModel
     {
-        public TafelNaam GetSelectedTafelNaam(MyModel model)
-{
-    return model.tafelnaam;
-}
+
+        public IActionResult OnPost(string tafel)
+        {
+            HttpContext.Session.SetString("TafelNummer", tafel);
+            return RedirectToPage("/Bestellen");
+        }
         public void OnGet()
         {
         }
