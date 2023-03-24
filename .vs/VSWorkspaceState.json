@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\WebdevProjectStarterTemplate",
-    "\\WebdevProjectStarterTemplate\\Pages"
+    "\\WebdevProjectStarterTemplate\\Pages",
+    "\\WebdevProjectStarterTemplate\\Pages\\Categories"
   ],
-  "SelectedNode": "\\WebdevProjectStarterTemplate\\Pages\\Hoofdmenu.cshtml",
+  "SelectedNode": "\\WebdevProjectStarterTemplate\\Pages\\Categories\\Index.cshtml",
   "PreviewInSolutionExplorer": false
 }

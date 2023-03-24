@@ -1,0 +1,18 @@
+﻿@page 
+@model WebdevProjectStarterTemplate.Pages.InlogModel
+
+@{
+ 
+}
+
+<div class = "Inlog">
+<form method="post">
+	<label class="form-label">Email:</label>
+	<input class="form-control" width="100px" asp-for=@Model.Email/>
+	<label class="form-label">Wachtwoord:</label>
+	<input class="form-control" width="100px" type="password" asp-for=@Model.Wachtwoord/>
+	<button class="btn-primary" type="submit">Log in</button>
+    <button class="btn-primary" type="submit" asp-page="/Bestellen">Ik wil bestellen</button>
+
+</form>
+</div>

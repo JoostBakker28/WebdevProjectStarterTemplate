@@ -2,12 +2,15 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Options;
+using Org.BouncyCastle.Asn1.X509;
+using Org.BouncyCastle.Crypto.Tls;
 using System.Diagnostics.Eventing.Reader;
 
-namespace WebdevProjectStarterTemplate.Pages.pagina
+namespace WebdevProjectStarterTemplate.Pages
 {
     public class InlogModel : PageModel
     {
+        
         [BindProperty]
         public string Email { get; set; }
         [BindProperty]
@@ -15,15 +18,18 @@ namespace WebdevProjectStarterTemplate.Pages.pagina
 
         public IActionResult OnPost()
         {
-            if(Email == "Joost@test.nl" && Wachtwoord == "1234")
+            if (Email == "Joost@test.nl" && Wachtwoord == "1234") 
+            { 
+                HttpContext.Session.SetString("Email", Email);
+                return RedirectToPage("/OberPagina");
+            }
+           else
             {
-				return new RedirectToPageResult("/Pagina/OberPagina");
-			}
-            else
-            {
+                
                 return Page();
             }
-        }
+    }
+
         public void OnGet()
         {
 

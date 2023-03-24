@@ -20,6 +20,15 @@ CREATE TABLE Product
 
     CONSTRAINT FK_ProductCategory FOREIGN KEY (CategoryId) REFERENCES Category (CategoryId) ON DELETE CASCADE 
 );
+CREATE TABLE tableOrder (
+   ProductID INT,
+   ProductName VARCHAR(25),
+   ProductPrice DOUBLE,
+   TableID INT,
+   Amount INT,
+   AmountPaid INT,
+   PRIMARY KEY(ProductID,TableID)
+);
 
 INSERT INTO Category (Name) VALUES ('Frisdranken');
 INSERT INTO Category (Name) VALUES ('Bier');

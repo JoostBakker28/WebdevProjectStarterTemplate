@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace WebdevProjectStarterTemplate.Pages.pagina
+namespace WebdevProjectStarterTemplate.Pages
 {
-    public class BestellenModel : PageModel
+    public class OverzichtModel : PageModel
     {
         public void OnGet()
         {
