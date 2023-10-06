@@ -9,7 +9,7 @@ namespace WebdevProjectStarterTemplate.Pages
 
 		public void OnGet()
 		{
-			Username = HttpContext.Session.GetString("username");
+			//Username = HttpContext.Session.GetString("username");
 		}
 
 	}
