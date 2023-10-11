@@ -4,16 +4,32 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="Inlog">
-    <form method="post">
-        <label class="form-label">Email:</label>
-        <input class="form-control" width="100px" asp-for=@Model.Email />
-        <label class="form-label">Wachtwoord:</label>
-        <input class="form-control" width="100px" type="password" asp-for=@Model.Wachtwoord />
-        <button class="btn-primary" type="submit">Log in</button>
-        <button class="btn-primary" type="submit" asp-page="/TafelSelectie">Ik wil bestellen</button>
+<div class="container ">
+    <div class="col-4">
+        <form method="post">
 
-    </form>
+            <div class="mb-3 w-auto">
+                <label class="form-label">mail</label>
+                <input type="email" class="form-control" name="mail" />
+            </div>
+
+            <div class="mb-3 w-auto">
+                <label class="form-label">Wachtwoord</label>
+                <input type="password" class="form-control" name="wachtwoord" />
+            </div>
+
+            <span class="text-black form-text">@Model.ErrorMessage</span>
+
+            <button type="submit" class="btn btn-primary" asp-page-handler="LogIn">Inloggen</button>
+            <form asp-asp-page-handler="Tafels" method="post">            
+                <button class="btn btn-primary">Ik wil bestellen</button>
+            </form>
+
+
+
+        </form>
+    </div>
+
 </div>
 
 
