@@ -5,7 +5,7 @@ namespace WebdevProjectStarterTemplate.Models
     public class Gebruiker
     {
         [Required]
-        public string mail { get; set; }
+        public string Email { get; set; }
         [Required]
         public string wachtwoord { get; set; }
     }

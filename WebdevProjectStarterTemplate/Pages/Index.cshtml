@@ -9,21 +9,21 @@
         <form method="post">
 
             <div class="mb-3 w-auto">
-                <label class="form-label">mail</label>
-                <input type="email" class="form-control" name="mail" />
+                <label class="form-label">Email</label>
+                <input type="email" id="Email" class="form-control" name="Email" />
             </div>
 
             <div class="mb-3 w-auto">
                 <label class="form-label">Wachtwoord</label>
-                <input type="password" class="form-control" name="wachtwoord" />
+                <input type="password" id="wachtwoord" class="form-control" name="wachtwoord" />
             </div>
 
             <span class="text-black form-text">@Model.ErrorMessage</span>
 
-            <button type="submit" class="btn btn-primary" asp-page-handler="LogIn">Inloggen</button>
-            <form asp-asp-page-handler="Tafels" method="post">            
-                <button class="btn btn-primary">Ik wil bestellen</button>
-            </form>
+            <button type="submit" class="btn btn-primary" value="Login" asp-page-handler="LogIn">Inloggen</button>
+            <button type="submit" class="btn btn-primary" asp-page-handler="Tafels">Ik wil bestellen</button>
+            <button type="submit" class="btn btn-primary" asp-page-handler="Registreren">Registreren als ober</button>
+
 
 
 

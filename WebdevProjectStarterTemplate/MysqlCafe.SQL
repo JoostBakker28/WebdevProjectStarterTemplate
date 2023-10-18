@@ -97,6 +97,16 @@ INSERT INTO Product (Name, CategoryId, Price) VALUES ('Warme chocomel' , (SELECT
 INSERT INTO Product (Name, CategoryId, Price) VALUES ('Warme chocomel met slagroom' , (SELECT CategoryId FROM Category WHERE Name = 'Warme dranken'), 3.50);
 INSERT INTO `webdevproject`.`gebruikers` (`Email`, `Wachtwoord`, `UserID`) VALUES ('Joost@test.nl', '1234', '1');
 INSERT INTO `webdevproject`.`gebruikers` (`Email`, `Wachtwoord`, `UserID`) VALUES ('Piet@nhlstenden.com', 'IkHebHonger', '2');
+insert INTO Tafels (TableID) values (1);
+insert INTO Tafels (TableID) values (2);
+insert INTO Tafels (TableID) values (3);
+insert INTO Tafels (TableID) values (4);
+insert INTO Tafels (TableID) values (5);
+insert INTO Tafels (TableID) values (6);
+insert INTO Tafels (TableID) values (7);
+insert INTO Tafels (TableID) values (8);
+insert INTO Tafels (TableID) values (9);
+insert INTO Tafels (TableID) values (10);
 
 
 SELECT * 

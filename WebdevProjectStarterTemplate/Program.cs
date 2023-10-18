@@ -2,7 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-
+builder.Services.AddSession();
 var app = builder.Build();
 
 Program.Configuration = app.Configuration;
@@ -21,10 +21,12 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+app.UseSession();
 app.MapRazorPages();
 
 app.Run();
+
+
 
 
 partial class Program

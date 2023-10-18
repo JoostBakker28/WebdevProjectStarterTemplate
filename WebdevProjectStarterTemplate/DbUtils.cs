@@ -1,5 +1,6 @@
 using System.Data;
 using MySql.Data.MySqlClient;
+using Dapper;
 
 namespace WebdevProjectStarterTemplate
 {
