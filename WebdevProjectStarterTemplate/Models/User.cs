@@ -2,7 +2,7 @@
 
 namespace WebdevProjectStarterTemplate.Models
 {
-    public class Gebruiker
+    public class User
     {
         [Required]
         public string Email { get; set; }

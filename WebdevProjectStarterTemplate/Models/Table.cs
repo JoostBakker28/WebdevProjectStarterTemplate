@@ -2,7 +2,7 @@
 
 namespace WebdevProjectStarterTemplate.Models
 {
-    public class Tafel
+    public class Table
     {
         [Required]
         public int TableID { get; set; }

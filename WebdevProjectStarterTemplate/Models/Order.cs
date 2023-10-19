@@ -2,7 +2,7 @@
 
 namespace WebdevProjectStarterTemplate.Models
 {
-    public class Bestelling
+    public class Order
     {
         [Required]
         public int ProductID { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace WebdevProjectStarterTemplate.Repositories
 {
-    public class BestellingenRepository
+    public class OrderRepository
     {
     }
 }
