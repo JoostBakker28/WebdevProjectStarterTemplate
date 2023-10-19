@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS WebdevProject;
 
 USE WebdevProject;
 
-DROP TABLE IF EXISTS Category, Product, tableOrder, Tafels, Gebruikers CASCADE ;
+DROP TABLE IF EXISTS Category, Product, tableOrder, Tafels, Users CASCADE ;
 
 
 CREATE TABLE Category
@@ -33,7 +33,7 @@ CREATE TABLE Tafels (
   TableID INT NOT NULL DEFAULT 1,
   PRIMARY KEY (TableID));
   
-  create table Gebruikers(
+  create table Users(
   Email varchar(25),
   Wachtwoord varchar(25),
   UserID int auto_increment,
@@ -95,8 +95,8 @@ INSERT INTO Product (Name, CategoryId, Price) VALUES ('Koffie verkeerd' , (SELEC
 INSERT INTO Product (Name, CategoryId, Price) VALUES ('Espresso' , (SELECT CategoryId FROM Category WHERE Name = 'Warme dranken'), 2.50);
 INSERT INTO Product (Name, CategoryId, Price) VALUES ('Warme chocomel' , (SELECT CategoryId FROM Category WHERE Name = 'Warme dranken'), 3.00);
 INSERT INTO Product (Name, CategoryId, Price) VALUES ('Warme chocomel met slagroom' , (SELECT CategoryId FROM Category WHERE Name = 'Warme dranken'), 3.50);
-INSERT INTO `webdevproject`.`gebruikers` (`Email`, `Wachtwoord`, `UserID`) VALUES ('Joost@test.nl', '1234', '1');
-INSERT INTO `webdevproject`.`gebruikers` (`Email`, `Wachtwoord`, `UserID`) VALUES ('Piet@nhlstenden.com', 'IkHebHonger', '2');
+INSERT INTO `webdevproject`.`Users` (`Email`, `Wachtwoord`, `UserID`) VALUES ('Joost@test.nl', '1234', '1');
+INSERT INTO `webdevproject`.`Users` (`Email`, `Wachtwoord`, `UserID`) VALUES ('Piet@nhlstenden.com', 'IkHebHonger', '2');
 insert INTO Tafels (TableID) values (1);
 insert INTO Tafels (TableID) values (2);
 insert INTO Tafels (TableID) values (3);

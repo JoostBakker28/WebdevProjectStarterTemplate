@@ -13,7 +13,16 @@
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </head>
 <body>
+    @{
+       <form>
+        <label for="tafel">Selecteer uw tafel</label>
+        <select id="TafelKiezen" name="TafelKiezen">
+            foreach(var tafel in Model.Table.Get())<option value="@Model.Tables">Tafel</option>}
 
+        </select>
+        <button type="button" formmethod="post" id="TafelBevestigen" asp-page="/Bestellen">Bevestig tafel</button>
+    </form>
+    }
 
 </body>
 </html>

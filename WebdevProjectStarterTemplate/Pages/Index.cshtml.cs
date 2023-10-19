@@ -26,7 +26,7 @@ public class IndexModel : PageModel
 
         public IActionResult OnPostLogIn(string Email, string wachtwoord)
         {
-        User gebruiker = new Repositories.UserRepository().Get(Email, wachtwoord);
+        User gebruiker = new UserRepository().Get(Email, wachtwoord);
             if(gebruiker.Email != null && gebruiker.wachtwoord != null)
             {
             HttpContext.Session.SetString("Gebruiker", JsonSerializer.Serialize(gebruiker));
@@ -38,9 +38,9 @@ public class IndexModel : PageModel
                 return Page();
             }
         }
-        public void OnPostTafels(Object sender, EventArgs e)
+        public void OnPostBestellen(Object sender, EventArgs e)
         {
-        Response.Redirect("/TafelSelectie");
+        Response.Redirect("/Bestellen");
         }
         
     }
