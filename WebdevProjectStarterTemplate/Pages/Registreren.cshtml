@@ -1,4 +1,37 @@
 ﻿@page
 @model WebdevProjectStarterTemplate.Pages.RegistrerenModel
-@{
-}
+
+
+    <div class="container ">
+        <div class="col-4">
+            <form method="post">
+
+                <div class="mb-3 w-auto">
+                    <label class="form-label">Email</label>
+                    <input type="email" id="Email" class="form-control" name="Email" />
+                </div>
+
+                <div class="mb-3 w-auto">
+                    <label class="form-label">Wachtwoord</label>
+                    <input type="password" id="wachtwoord" class="form-control" name="wachtwoord" />
+                </div>
+
+                <div class="mb-3 w-auto">
+                    <label class="form-label">Wachtwoord herhalen</label>
+                    <input type="password" id="wachtwoord2" class="form-control" name="wachtwoord2" />
+                </div>
+                
+                <div class="mb-3 w-auto">
+                    <label class="form-label">Verificatiecode</label>
+                    <input type="password" id="Verificatiecode" class="form-control" name="Verificatiecode" />
+                </div>
+
+
+                <span class="text-black form-text">@Model.ErrorMessage</span>
+
+                <button type="submit" class="btn btn-primary" value="Registreren" asp-page-handler="Registreren">Registreren</button>
+            </form>
+        </div>
+        
+
+    </div>

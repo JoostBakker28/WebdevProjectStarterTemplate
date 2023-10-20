@@ -42,5 +42,10 @@ public class IndexModel : PageModel
         {
         Response.Redirect("/Bestellen");
         }
-        
-    }
+
+        public void OnPostRegistreren(Object sender, EventArgs e)
+        {
+        Response.Redirect("/Registreren");
+        }
+
+}

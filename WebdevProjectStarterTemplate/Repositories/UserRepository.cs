@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Org.BouncyCastle.Asn1.Cmp;
 using System.Data;
+using System.Data.SqlTypes;
 using WebdevProjectStarterTemplate.Models;
 
 namespace WebdevProjectStarterTemplate.Repositories
@@ -26,6 +27,22 @@ namespace WebdevProjectStarterTemplate.Repositories
             {
                 return new User();
             }
+        }
+
+        public void AddUser(string Email, string wachtwoord)
+        {
+            try
+            {
+                string sql = "INSERT INTO webdevproject.USERS (Email, Wachtwoord) VALUES (@Email, @wachtwoord);";
+
+                using var connection = GetConnection();
+                connection.Execute(sql, new { Email, wachtwoord });
+            }
+            catch (MySql.Data.MySqlClient.MySqlException)
+            {
+                
+            }
+
         }
 
 

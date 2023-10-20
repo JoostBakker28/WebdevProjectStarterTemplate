@@ -13,11 +13,11 @@ namespace WebdevProjectStarterTemplate.Repositories
 
         public IEnumerable<Table>Get()
         {
-            string sql = "Select * From Tafels";
+            string sql = "Select * From webdevproject.Tafels";
 
             using var connection = GetConnection();
-            var order = connection.Query<Table>(sql);
-            return order;
+            var tafels = connection.Query<Table>(sql);
+            return tafels;
         }
     }
 }
