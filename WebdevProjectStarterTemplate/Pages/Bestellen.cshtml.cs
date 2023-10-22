@@ -22,13 +22,29 @@ namespace WebdevProjectStarterTemplate.Pages
         {
         if(SelectedTableID != 0)
             HttpContext.Session.SetString("TableID", Convert.ToString(SelectedTableID));
-            GekozenTafelMessage = "Geselecteerde tafel: Tafel " + SelectedTableID;
+            if (SelectedTableID != 0)
+            {
+                GekozenTafelMessage = "Geselecteerde tafel: Tafel " + SelectedTableID;
+            }
             return Page(); 
         }
         public string table { get; set; }
 
-        public void OnGet()
+        public IActionResult OnGet() //TODO: code fixen!
         {
+            if(this.SelectedTableID != 0)
+            {
+                Response.Cookies.Append("SelectedTable", Convert.ToString(SelectedTableID));
+                return Page();
+            }
+            else if(this.SelectedTableID == 0 && Request.Cookies["SelectedTable"] != null)
+            {
+                return RedirectToPage("/Bestellen", new { table = this.SelectedTableID });
+            }
+            else
+            {
+                return Page();
+            }
         }
     }
 }
