@@ -15,10 +15,12 @@ namespace WebdevProjectStarterTemplate.Pages
         [BindProperty]
         public int SelectedTableID { get; set; }
         public string GekozenTafelMessage { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Category { get; set; } = null!;
 
         public IActionResult OnPost()
         {
-        if(SelectedTableID != null)
+        if(SelectedTableID != 0)
             HttpContext.Session.SetString("TableID", Convert.ToString(SelectedTableID));
             GekozenTafelMessage = "Geselecteerde tafel: Tafel " + SelectedTableID;
             return Page(); 

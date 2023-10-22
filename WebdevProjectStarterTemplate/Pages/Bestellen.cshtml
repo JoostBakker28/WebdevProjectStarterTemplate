@@ -27,6 +27,58 @@
     </form>    
                 <span class="text-black form-text">@Model.GekozenTafelMessage</span>
 
+
+                <div class="container">
+                    <div class="row">
+
+                        @*Categorieën*@
+                        <div class="col-sm">
+
+                            <ul class="list-group">
+
+                                @foreach(var category in Model.Categories)
+                                    {
+                                        <a class="list-group-item @(category.Name == Model.Category ? "active" : "")" asp-route-category="@category.Name">@category.Name</a>
+                                    }
+                            </ul>
+                        </div>
+
+                        @*Producten*@
+                        <div class="col-sm">
+                            <ul class="list-group">
+
+                    @foreach(var category in Model.Categories)
+                    {
+                        if (category.Name == Model.Category)
+                        {
+                            foreach (var product in category.Products)
+                            {
+                                <form method="post">
+                                    <button class="list-group-item list-group-item-action d-flex justify-content-between align-content-center" asp-page-handler="add" class="list-group-item" asp-route-product="@product.Name">
+                                        @product.Name
+                                        <div class ="my-auto">
+                                            <svg class="float-end bi bi-plus-circle-fill" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                                <path class="" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    <input type="hidden" name="Amount" value="1">
+                                    <input type="hidden" name="ProductID" value="@product.ProductId">
+
+                                </form>
+                            }
+                        }
+
+                                    
+                     }
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+
 </body>
 </html>
 
