@@ -12,10 +12,16 @@ namespace WebdevProjectStarterTemplate.Pages
         public IEnumerable<Table> TableList { get { return new TableRepository().Get(); } }//Haal alle tafels op en zet ze in een lijst
         public IEnumerable<Category> Categories { get { return new CategoryRepository().GetCategoriesWithProducts(); } }
 
-        public IActionResult OnPost(string TableID)
+        [BindProperty]
+        public int SelectedTableID { get; set; }
+        public string GekozenTafelMessage { get; set; }
+
+        public IActionResult OnPost()
         {
-            HttpContext.Session.SetString("TableID", TableID);
-            return RedirectToPage("/Bestellen");
+        if(SelectedTableID != null)
+            HttpContext.Session.SetString("TableID", Convert.ToString(SelectedTableID));
+            GekozenTafelMessage = "Geselecteerde tafel: Tafel " + SelectedTableID;
+            return Page(); 
         }
         public string table { get; set; }
 
