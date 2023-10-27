@@ -13,7 +13,10 @@
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </head>
 <body>
-    
+    @if(Model.Request.Cookies["SelectedTable"] != null || Model.SelectedTableID != null){
+    <span class="text-black form-text">Gekozen tafel, tafel @Model.SelectedTableID</span>
+    }
+   else if(Model.Request.Cookies["SelectedTable"] == null){ 
        <form method="post" action="">
         <label for="tafelSelectie">Selecteer uw tafel</label>
         <select id="TafelKiezen" asp-for="SelectedTableID">
@@ -25,9 +28,7 @@
         </select>
         <button type="submit">Bevestig tafel</button>
     </form>    
-                <span class="text-black form-text">@Model.GekozenTafelMessage</span>
-
-
+    }
                 <div class="container">
                     <div class="row">
 

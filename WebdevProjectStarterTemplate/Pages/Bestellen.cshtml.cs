@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Diagnostics;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text.RegularExpressions;
 using WebdevProjectStarterTemplate.Models;
@@ -11,40 +12,46 @@ namespace WebdevProjectStarterTemplate.Pages
 
         public IEnumerable<Table> TableList { get { return new TableRepository().Get(); } }//Haal alle tafels op en zet ze in een lijst
         public IEnumerable<Category> Categories { get { return new CategoryRepository().GetCategoriesWithProducts(); } }
+        public IEnumerable<Order> Orders { get
+            {
+                string result;
+                result = Regex.Match(Convert.ToString(SelectedTableID), @"/d+").Value;
+                return new OrderRepository().Get(Int32.Parse(result));
+            } }
 
         [BindProperty]
-        public int SelectedTableID { get; set; }
-        public string GekozenTafelMessage { get; set; }
+        public string SelectedTableID { get; set; }
         [BindProperty(SupportsGet = true)]
         public string Category { get; set; } = null!;
 
         public IActionResult OnPost()
         {
-        if(SelectedTableID != 0)
-            HttpContext.Session.SetString("TableID", Convert.ToString(SelectedTableID));
-            if (SelectedTableID != 0)
+            if (SelectedTableID != null)
             {
-                GekozenTafelMessage = "Geselecteerde tafel: Tafel " + SelectedTableID;
+                HttpContext.Session.SetString("TableID", SelectedTableID);
+                Response.Cookies.Append("SelectedTable", SelectedTableID);
             }
             return Page(); 
         }
-        public string table { get; set; }
 
-        public IActionResult OnGet() //TODO: code fixen!
+        public IActionResult OnGet() 
         {
-            if(this.SelectedTableID != 0)
+            if(this.SelectedTableID != null)
             {
-                Response.Cookies.Append("SelectedTable", Convert.ToString(SelectedTableID));
+                Response.Cookies.Append("SelectedTable", SelectedTableID);
                 return Page();
+
             }
-            else if(this.SelectedTableID == 0 && Request.Cookies["SelectedTable"] != null)
+            else if(this.SelectedTableID == null && Request.Cookies["SelectedTable"] != null)
             {
-                return RedirectToPage("/Bestellen", new { table = this.SelectedTableID });
+                this.SelectedTableID = Request.Cookies["SelectedTable"];
+                return RedirectToPage("/Bestellen", new {SelectedTableID });
             }
             else
             {
                 return Page();
             }
         }
+
     }
 }
