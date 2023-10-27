@@ -26,10 +26,11 @@ public class IndexModel : PageModel
 
         public IActionResult OnPostLogIn(string Email, string wachtwoord)
         {
-        User gebruiker = new UserRepository().Get(Email, wachtwoord);
-            if(gebruiker.Email != null && gebruiker.wachtwoord != null)
+        User gebruiker = new UserRepository().Get(Email, wachtwoord); //Check of de login klopt
+            if(gebruiker.Email != null && gebruiker.wachtwoord != null) //check of alles is ingevuld
             {
-            HttpContext.Session.SetString("Gebruiker", JsonSerializer.Serialize(gebruiker));
+            HttpContext.Session.SetString("User", JsonSerializer.Serialize(gebruiker));//Set User
+            
                 return RedirectToPage("/OberPagina");
             }
             else

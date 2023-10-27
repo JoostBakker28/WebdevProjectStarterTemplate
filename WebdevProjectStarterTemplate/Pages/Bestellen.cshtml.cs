@@ -20,28 +20,41 @@ namespace WebdevProjectStarterTemplate.Pages
                 return new OrderRepository().Get(Int32.Parse(result));
             } }
 
-        [BindProperty]
+        [BindProperty(SupportsGet =true)]
         public string? SelectedTableID { get; set; }
         [BindProperty(SupportsGet = true)]
         public string Category { get; set; } = null!;
 
 
-        public IActionResult OnGet(string table) 
+        public IActionResult OnGet(string table)
         {
-            if (this.SelectedTableID != null) 
+            if (this.SelectedTableID != null)
             {
-                Response.Cookies.Append("MyTable", table); 
+                Response.Cookies.Append("MyTable", table);
                 return Page();
             }
-            else if (this.SelectedTableID == null && Request.Cookies["MyTable"] != null) 
+            else if (this.SelectedTableID == null && Request.Cookies["MyTable"] != null)
             {
-                this.SelectedTableID = Request.Cookies["MyTable"]; 
-                return RedirectToPage("/Bestellen", new { table = this.SelectedTableID }); 
+                this.SelectedTableID = Request.Cookies["MyTable"];
+                return Page();
             }
-            else 
+            else
             {
                 return Page();
             }
+        }
+
+        public void OnPostAdd(int TableID, int ProductID, int Amount)
+        {
+            new OrderRepository().AddToOrder(TableID, ProductID, Amount);
+        }
+        public void OnPostRemove1(int TableID, int ProductID, int Amount)
+        {
+            new OrderRepository().RemoveOneFromOrder(TableID, ProductID, Amount);
+        }
+        public void OnPostRemoveAll(int TableID, int ProductID, int Amount)
+        {
+            new OrderRepository().RemoveFromOrder(TableID, ProductID);
         }
 
     }
