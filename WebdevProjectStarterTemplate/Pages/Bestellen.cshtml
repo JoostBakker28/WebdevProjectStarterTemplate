@@ -69,7 +69,7 @@
                                     </button>
                                     <input type="hidden" name="Amount" value="1">
                                     <input type="hidden" name="ProductID" value="@product.ProductId">
-                                    <input type="hidden" name="TableID" value="@Regex.Match(Model.SelectedTableID, @"\d+")">
+                                    <input type="hidden" name="TableID" value="@Request.Cookies["SelectedTable"]">
                                 </form>
                             }
                         }                                
@@ -87,7 +87,6 @@
                                     <tr>
                                         <th scope="col">Product</th>
                                         <th scope="col">Aantal</th>
-                                        <th scope="col"></th>
                                     </tr>
                                 </thead>
 

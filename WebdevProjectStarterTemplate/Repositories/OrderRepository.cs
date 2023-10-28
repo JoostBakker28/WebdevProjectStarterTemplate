@@ -22,7 +22,7 @@ namespace WebdevProjectStarterTemplate.Repositories
 
         public void AddToOrder(int TableID, int ProductID, int Amount) //voeg 1 product toe aan de bestelling
         {
-            string sql = "Insert INTO webdevproject.tableorder Select @ProductID, Name, Price, @TableID, @Amount, 0, 0 FROM Product WHERE ProductID = @ProductID ON DUPLICATE KEY UPDATE Amount = Amount + 1";
+            string sql = "Insert INTO webdevproject.tableorder Select @ProductID, Name, Price, @TableID, @Amount, 0 FROM Product WHERE ProductID = @ProductID ON DUPLICATE KEY UPDATE Amount = Amount + 1";
 
             using var connection = GetConnection();
             connection.Execute(sql, new { TableID, ProductID, Amount });

@@ -1,0 +1,14 @@
+﻿@page
+@model WebdevProjectStarterTemplate.Pages.Alles_betalenModel
+@{
+    if (Model.SelectedTableID != null)
+    {
+        Response.Cookies.Append("SelectedTable", Model.SelectedTableID);  //Cookies yum, yum!
+    }
+
+    if (Model.SelectedTableID == null) //Wanneer Model.Table niet is ingesteld crasht de site omdat Regex resultString NULL doorgeeft aan GET
+    {
+        Model.SelectedTableID = "0"; //Er moet een getal in de omschrijving staan, het getal 0 wordt NIET gebruikt als TableID (autoincrement is al voorbij TableID 1)
+    }
+}
+
