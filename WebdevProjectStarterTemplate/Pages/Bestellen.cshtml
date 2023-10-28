@@ -1,11 +1,11 @@
-﻿@page "{Table?}/{Category?}/{Product?}";
+﻿@page "{Table?}/{category?}/{Product?}"
 @model BestellenModel
 @using System.Text.RegularExpressions;
 
 @{
     if (Model.SelectedTableID != null)
     {
-    Response.Cookies.Append("MyTable", Model.SelectedTableID);  //Cookies yum, yum!
+    Response.Cookies.Append("SelectedTable", Model.SelectedTableID);  //Cookies yum, yum!
     }
 
     if (Model.SelectedTableID == null) //Wanneer Model.Table niet is ingesteld crasht de site omdat Regex resultString NULL doorgeeft aan GET

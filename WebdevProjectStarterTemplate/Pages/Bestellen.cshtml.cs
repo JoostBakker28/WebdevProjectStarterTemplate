@@ -20,8 +20,8 @@ namespace WebdevProjectStarterTemplate.Pages
                 return new OrderRepository().Get(Int32.Parse(result));
             } }
 
-        [BindProperty(SupportsGet =true)]
-        public string? SelectedTableID { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SelectedTableID { get; set; }
         [BindProperty(SupportsGet = true)]
         public string Category { get; set; } = null!;
 
@@ -30,13 +30,13 @@ namespace WebdevProjectStarterTemplate.Pages
         {
             if (this.SelectedTableID != null)
             {
-                Response.Cookies.Append("MyTable", table);
+                Response.Cookies.Append("SelectedTable", table);
                 return Page();
             }
-            else if (this.SelectedTableID == null && Request.Cookies["MyTable"] != null)
+            else if (table == null && Request.Cookies["SelectedTable"] != null)
             {
-                this.SelectedTableID = Request.Cookies["MyTable"];
-                return Page();
+                this.SelectedTableID = Request.Cookies["SelectedTable"];
+                return RedirectToPage("/Bestellen", new { table = this.SelectedTableID });
             }
             else
             {
