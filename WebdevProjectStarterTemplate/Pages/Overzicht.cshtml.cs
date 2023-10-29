@@ -9,13 +9,13 @@ namespace WebdevProjectStarterTemplate.Pages
     public class OverzichtModel : PageModel
     {
         public IEnumerable<Table> TableList { get { return new TableRepository().Get(); } }//Haal alle tafels op en zet ze in een lijst
-        public IEnumerable<Order> Orders
+        public IEnumerable<Order> OrdersList
         {
             get
-            {
-                string result;
-                result = Regex.Match(SelectedTableID, @"\d+").Value;
-                return new OrderRepository().Get(Int32.Parse(result));
+            {       
+                    string result;
+                    result = Regex.Match(SelectedTableID, @"\d+").Value;
+                    return new OrderRepository().Get(Int32.Parse(result));                
             }
         }
 

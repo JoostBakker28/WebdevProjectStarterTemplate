@@ -13,7 +13,7 @@ namespace WebdevProjectStarterTemplate.Repositories
         
         public IEnumerable<Order> Get(int TableID)
         {
-            string sql = "SELECT * FROM tableOrder WHERE TableID = @TableID ORDER BY TableID ASC";
+            string sql = "SELECT * FROM tableOrder WHERE TableID = @TableID ORDER BY Name ASC";
 
             using var connection = GetConnection();
             var order = connection.Query<Order>(sql, new { TableID });
@@ -22,7 +22,7 @@ namespace WebdevProjectStarterTemplate.Repositories
 
         public void AddToOrder(int TableID, int ProductID, int Amount) //voeg 1 product toe aan de bestelling
         {
-            string sql = "Insert INTO webdevproject.tableorder Select @ProductID, Name, Price, @TableID, @Amount, 0 FROM Product WHERE ProductID = @ProductID ON DUPLICATE KEY UPDATE Amount = Amount + 1";
+            string sql = "Insert INTO webdevproject.tableOrder Select @ProductID, Name, Price, @TableID, @Amount, 0 FROM Product WHERE ProductID = @ProductID ON DUPLICATE KEY UPDATE Amount = Amount + 1";
 
             using var connection = GetConnection();
             connection.Execute(sql, new { TableID, ProductID, Amount });

@@ -6,7 +6,7 @@ using WebdevProjectStarterTemplate.Repositories;
 
 namespace WebdevProjectStarterTemplate.Pages
 {
-    public class Per_persoon_betalenModel : PageModel
+    public class PerpersoonbetalenModel : PageModel
     {
         public IEnumerable<Table> TableList { get { return new TableRepository().Get(); } }//Haal alle tafels op en zet ze in een lijst
         public IEnumerable<Category> Categories { get { return new CategoryRepository().GetCategoriesWithProducts(); } }

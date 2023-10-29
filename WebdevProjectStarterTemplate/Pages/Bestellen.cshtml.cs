@@ -13,10 +13,21 @@ namespace WebdevProjectStarterTemplate.Pages
 
         public IEnumerable<Models.Table> TableList { get { return new TableRepository().Get(); } }//Haal alle tafels op en zet ze in een lijst
         public IEnumerable<Category> Categories { get { return new CategoryRepository().GetCategoriesWithProducts(); } }
-        public IEnumerable<Order> Orders { get
+        public IEnumerable<Order> OrdersList { get
             {
-                string result;
-                result = Regex.Match(SelectedTableID, @"\d+").Value;
+                string? result;
+                if (SelectedTableID != "0")
+                {
+                    result = SelectedTableID;
+                }
+                else if (Request.Cookies["SelectedTable"] != null)
+                {
+                    result = Request.Cookies["SelectedTable"];
+                }
+                else
+                {
+                    result = "0";
+                }
                 return new OrderRepository().Get(Int32.Parse(result));
             } }
 

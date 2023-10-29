@@ -5,19 +5,21 @@
 @{
     if (Model.SelectedTableID != null)
     {
-    Response.Cookies.Append("SelectedTable", Model.SelectedTableID);  //Cookies yum, yum!
+    Response.Cookies.Append("SelectedTable", Model.SelectedTableID);  
     }
 
-    if (Model.SelectedTableID == null) //Wanneer Model.Table niet is ingesteld crasht de site omdat Regex resultString NULL doorgeeft aan GET
+    if (Model.SelectedTableID == null) 
     {
-        Model.SelectedTableID = "0"; //Er moet een getal in de omschrijving staan, het getal 0 wordt NIET gebruikt als TableID (autoincrement is al voorbij TableID 1)
+        Model.SelectedTableID = "0"; 
     }
 }
 
 <div class="row col-12">
     @{
-    if(Model.Request.Cookies["SelectedTable"] != null || Model.SelectedTableID != "0"){
-    <span class="text-black form-text">Gekozen tafel, tafel @Model.Request.Cookies["SelectedTable"] @Model.SelectedTableID</span>
+
+
+        if(Model.Request.Cookies["SelectedTable"] != null || Model.SelectedTableID != "0"){
+            <span class="text-black form-text">Gekozen tafel, tafel @Request.Cookies["SelectedTable"]</span>
     }
    else if(Model.Request.Cookies["SelectedTable"] == null){ 
        <form method="post" action="">
@@ -91,11 +93,11 @@
                                 </thead>
 
                                 <tbody>
-                        @foreach (var order in Model.Orders)
+                        @foreach (var order in Model.OrdersList)
                         {
                             <tr>
                                 <td>
-                                    @order.ProductName
+                                    @order.Name
                                 </td>
                                     <td>
                                         <div class="d-flex flex-row">
@@ -149,6 +151,9 @@
                     </div>
                 </div>
 </div>
+<div class="d-flex justify-content-end">
+    <a type="button" class="m-1 btn btn-primary" asp-page="/Overzicht">Naar het overzicht</a>
+    </div>
 
 
 

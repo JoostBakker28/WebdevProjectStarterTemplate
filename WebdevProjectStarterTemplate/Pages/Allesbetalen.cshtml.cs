@@ -6,9 +6,9 @@ using WebdevProjectStarterTemplate.Repositories;
 
 namespace WebdevProjectStarterTemplate.Pages
 {
-    public class Alles_betalenModel : PageModel
+    public class AllesbetalenModel : PageModel
     {
-        public IEnumerable<Models.Table> TableList { get { return new TableRepository().Get(); } }//Haal alle tafels op en zet ze in een lijst
+        public IEnumerable<Table> TableList { get { return new TableRepository().Get(); } }//Haal alle tafels op en zet ze in een lijst
         public IEnumerable<Category> Categories { get { return new CategoryRepository().GetCategoriesWithProducts(); } }
         public IEnumerable<Order> Orders
         {
@@ -36,7 +36,7 @@ namespace WebdevProjectStarterTemplate.Pages
             else if (table == null && Request.Cookies["SelectedTable"] != null)
             {
                 this.SelectedTableID = Request.Cookies["SelectedTable"];
-                return RedirectToPage("/Alles Betalen", new { table = this.SelectedTableID });
+                return RedirectToPage("/AllesBetalen", new { table = this.SelectedTableID });
             }
             else
             {

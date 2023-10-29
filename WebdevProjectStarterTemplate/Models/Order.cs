@@ -7,9 +7,9 @@ namespace WebdevProjectStarterTemplate.Models
         [Required]
         public int ProductID { get; set; }
         [Required]
-        public int ProductName { get; set; }
+        public string Name { get; set; }
         [Required]
-        public int ProductPrice { get; set; }
+        public double ProductPrice { get; set; }
         [Required]
         public int TableID { get; set; }
         [Required]
