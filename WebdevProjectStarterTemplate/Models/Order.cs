@@ -16,5 +16,6 @@ namespace WebdevProjectStarterTemplate.Models
         public int Amount { get; set; }
         [Required]
         public int AmountPaid { get; set; } = 0;
+        public int AmountWantsToPay { get; set; }
     }
 }

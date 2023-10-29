@@ -11,10 +11,104 @@
         Model.SelectedTableID = Request.Cookies["SelectedTable"]; //Er moet een getal in de omschrijving staan, het getal 0 wordt NIET gebruikt als TableID (autoincrement is al voorbij TableID 1)
     }
 }
- @{
+@{
     if (Model.Request.Cookies["SelectedTable"] != null || Model.SelectedTableID != "0")
     {
         <span class="text-black form-text">Gekozen tafel, tafel @Request.Cookies["SelectedTable"]</span>
     }
-    }
+}
+
+@*winkelmandje*@
+<div>
+
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Prijs</th>
+                <th scope="col">Aantal Betaald</th>
+                <th scope="col">Nu Betalen</th>
+                <th scope="col">Aantal</th>
+                <th scope="col">Prijs</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>
+                        @order.Name
+                    </td>
+                    <td>
+                        @order.ProductPrice
+                    </td>
+                    <td>
+                        @order.AmountPaid/@order.Amount
+                    </td>
+
+                    <td> @*Kiezen hoeveel je wilt betalen*@
+                        <div class="d-flex flex-row">
+                            <form asp-page-handler="Remove1ToPay" method="post">
+                                @*knop om 1 te verwijderen om te betalen*@
+                                <button class="btn p-0 m-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                                    </svg>
+                                </button>
+                                <input type="hidden" name="AmountWantsToPay" value="@order.AmountWantsToPay">
+                                <input type="hidden" name="ProductID" value="@order.ProductID">
+                                <input type="hidden" name="TableID" value="@order.TableID">
+                            </form>
+
+                            <span class="px-2 pt-1 text-danger">@order.AmountWantsToPay</span>
+
+                            <form asp-page-handler="Add1ToPay" method="post">
+                                @*knop om 1 product toe te voegen om te betalen*@
+                                <button class="btn p-0 m-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                    </svg>
+                                </button>
+                                <input type="hidden" name="AmountWantsToPay" value="@order.AmountWantsToPay">
+                                <input type="hidden" name="ProductID" value="@order.ProductID">
+                                <input type="hidden" name="TableID" value="@order.TableID">
+                            </form>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="d-flex flex-row"> @*WinkelMand*@
+                           
+                            <span class="px-2 pt-1">@order.Amount</span>
+                          
+                    </td>
+                    @{
+                        double ProductXAantal;
+                        ProductXAantal = order.ProductPrice * order.AmountWantsToPay;
+                    }
+                    <td>
+                        <strong>
+                            € @ProductXAantal
+                        </strong>
+                    </td>
+
+                    
+                </tr>
+                
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="d-flex justify-content-end">
+                    <a type="button" class="m-1 btn btn-primary" asp-page="/Overzicht">Terug</a>
+                    <form asp-page-handler="Betalen" method="post" asp-route-table="@Request.Cookies["SelectedTable"]">
+                        <button class="m-1 btn btn-danger" type="submit">Betalen</button>
+                        <input type="hidden" name="TableID" value="@Request.Cookies["SelectedTable"]" />
+                    </form>
+                </div>
 

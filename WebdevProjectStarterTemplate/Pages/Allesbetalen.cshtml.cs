@@ -25,6 +25,8 @@ namespace WebdevProjectStarterTemplate.Pages
         [BindProperty(SupportsGet = true)]
         public string Category { get; set; } = null!;
 
+        public double TotaalBedrag { get; set; }
+
 
         public IActionResult OnGet(string table)
         {
@@ -42,6 +44,23 @@ namespace WebdevProjectStarterTemplate.Pages
             {
                 return Page();
             }
+        }
+
+        public void OnPostBetalen(int TableID)
+        {
+            new OrderRepository().AllesBetalen(TableID);
+        }
+        public void OnPostAdd(int TableID, int ProductID, int Amount)
+        {
+            new OrderRepository().AddToOrder(TableID, ProductID, Amount);
+        }
+        public void OnPostRemove1(int TableID, int ProductID, int Amount)
+        {
+            new OrderRepository().RemoveOneFromOrder(TableID, ProductID, Amount);
+        }
+        public void OnPostRemoveAll(int TableID, int ProductID, int Amount)
+        {
+            new OrderRepository().RemoveFromOrder(TableID, ProductID);
         }
     }
 }

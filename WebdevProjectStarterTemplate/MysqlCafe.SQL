@@ -22,11 +22,12 @@ CREATE TABLE Product
 );
 CREATE TABLE tableOrder (
    ProductID INT,
-   ProductName VARCHAR(25),
+   Name VARCHAR(40),
    ProductPrice DOUBLE,
    TableID INT,
    Amount INT,
    AmountPaid INT,
+   AmountWantsToPay INT,
    PRIMARY KEY(ProductID,TableID)
 );
 CREATE TABLE Tafels (
@@ -36,8 +37,7 @@ CREATE TABLE Tafels (
   create table Users(
   Email varchar(25),
   Wachtwoord varchar(25),
-  UserID int auto_increment,
-  primary key(UserId)
+  primary key(Email)
   );
 
 INSERT INTO Category (Name) VALUES ('Frisdranken');
@@ -95,8 +95,8 @@ INSERT INTO Product (Name, CategoryId, Price) VALUES ('Koffie verkeerd' , (SELEC
 INSERT INTO Product (Name, CategoryId, Price) VALUES ('Espresso' , (SELECT CategoryId FROM Category WHERE Name = 'Warme dranken'), 2.50);
 INSERT INTO Product (Name, CategoryId, Price) VALUES ('Warme chocomel' , (SELECT CategoryId FROM Category WHERE Name = 'Warme dranken'), 3.00);
 INSERT INTO Product (Name, CategoryId, Price) VALUES ('Warme chocomel met slagroom' , (SELECT CategoryId FROM Category WHERE Name = 'Warme dranken'), 3.50);
-INSERT INTO `webdevproject`.`Users` (`Email`, `Wachtwoord`, `UserID`) VALUES ('Joost@test.nl', '1234', '1');
-INSERT INTO `webdevproject`.`Users` (`Email`, `Wachtwoord`, `UserID`) VALUES ('Piet@nhlstenden.com', 'IkHebHonger', '2');
+INSERT INTO `webdevproject`.`Users` (`Email`, `Wachtwoord`) VALUES ('Joost@test.nl', '1234');
+INSERT INTO `webdevproject`.`Users` (`Email`, `Wachtwoord`) VALUES ('Piet@nhlstenden.com', 'IkHebHonger');
 insert INTO Tafels (TableID) values (1);
 insert INTO Tafels (TableID) values (2);
 insert INTO Tafels (TableID) values (3);

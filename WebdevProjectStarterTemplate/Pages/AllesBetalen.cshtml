@@ -18,3 +18,63 @@
     }
     }
 
+@*winkelmandje*@
+<div>
+
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Prijs</th>
+                <th scope="col">Aantal Betaald</th>
+                <th scope="col">Aantal</th>
+                <th scope="col">Totaal Prijs</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>
+                        @order.Name
+                    </td>
+                    <td>
+                        @order.ProductPrice
+                    </td>
+                    <td>
+                        @order.AmountPaid/@order.Amount
+                    </td>
+                    <td>
+                        <div class="d-flex flex-row">
+                            
+                            <span class="px-2 pt-1">@order.Amount</span>                           
+                        </div>
+
+                    </td>
+                    @{
+                        double ProductXAantal;
+                        ProductXAantal = order.ProductPrice * (order.Amount - order.AmountPaid);
+                    }
+                    <td>
+                        <strong>
+                           € @ProductXAantal
+                        </strong>
+                    </td>
+
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+    
+<div class="d-flex justify-content-end">
+    <a type="button" class="m-1 btn btn-primary" asp-page="/Overzicht">Terug</a>
+    <form asp-page-handler="Betalen" method="post" asp-route-table="@Request.Cookies["SelectedTable"]">
+        <button class="m-1 btn btn-danger" type="submit">Betalen</button>
+        <input type="hidden" name="TableID" value="@Request.Cookies["SelectedTable"]" />
+    </form>
+    </div>

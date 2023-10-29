@@ -26,6 +26,8 @@
         <thead>
             <tr>
                 <th scope="col">Product</th>
+                <th scope="col">Prijs</th>
+                <th scope="col">Aantal Betaald</th>
                 <th scope="col">Aantal</th>
             </tr>
         </thead>
@@ -36,6 +38,12 @@
                 <tr>
                     <td>
                         @order.Name
+                    </td>
+                    <td>
+                        @order.ProductPrice
+                    </td>
+                    <td>
+                        @order.AmountPaid/@order.Amount
                     </td>
                     <td>
                         <div class="d-flex flex-row">

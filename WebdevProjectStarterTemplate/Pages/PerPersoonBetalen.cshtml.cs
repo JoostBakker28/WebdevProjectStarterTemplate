@@ -43,5 +43,36 @@ namespace WebdevProjectStarterTemplate.Pages
                 return Page();
             }
         }
+
+        public void OnPostBetalen(int TableID)
+        {
+            new OrderRepository().DeelsBetalen(TableID);
+        }
+        public void OnPostAdd1ToPay(int TableID,int ProductID, int AmountWantsToPay)
+        {
+            new OrderRepository().Add1ToPay(TableID, ProductID, AmountWantsToPay);    
+        }
+        public void OnPostRemove1ToPay(int TableID, int ProductID, int AmountWantsToPay)
+        {
+            if (AmountWantsToPay > 0)
+            {
+                new OrderRepository().Remove1ToPay(TableID, ProductID, AmountWantsToPay);
+            }
+        }
+
+
+        public void OnPostAdd(int TableID, int ProductID, int Amount)
+        {
+            new OrderRepository().AddToOrder(TableID, ProductID, Amount);
+        }
+        public void OnPostRemove1(int TableID, int ProductID, int Amount)
+        {
+            new OrderRepository().RemoveOneFromOrder(TableID, ProductID, Amount);
+        }
+        public void OnPostRemoveAll(int TableID, int ProductID, int Amount)
+        {
+            new OrderRepository().RemoveFromOrder(TableID, ProductID);
+        }
     }
 }
+
