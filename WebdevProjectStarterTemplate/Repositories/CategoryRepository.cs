@@ -12,7 +12,7 @@ namespace WebdevProjectStarterTemplate.Repositories
             return new DbUtils().GetDbConnection();
         }
 
-        public Category Get(int categoryId)
+        public Category Get(int categoryId) //Alle categorieën ophalen
         {
             string sql = "SELECT * FROM Category WHERE CategoryId = @categoryId";
             
@@ -21,7 +21,7 @@ namespace WebdevProjectStarterTemplate.Repositories
             return category;
         }
 
-        public IEnumerable<Category> Get()
+        public IEnumerable<Category> Get() 
         {
             string sql = "SELECT * FROM Category ORDER BY Name";
             
@@ -32,7 +32,7 @@ namespace WebdevProjectStarterTemplate.Repositories
 
         
         
-        public IEnumerable<Category> GetCategoriesWithProducts()
+        public IEnumerable<Category> GetCategoriesWithProducts() //Categoriën ophalen met bijbehorende producten (Hoort bij Starter Template)
         {
             //het vullen van een lijst met categorieën is lastig met dapper (parent (Cagegory) with children (Products from Category))
             //ik heb idee van stackoverflow wat aangepast om het ook met LEFT JOIN te laten werken
@@ -79,7 +79,7 @@ namespace WebdevProjectStarterTemplate.Repositories
             return result;
         }
 
-        public Category Add(Category? category)
+        public Category Add(Category? category) 
         {
             string sql = @"
                 INSERT INTO Category (Name) 

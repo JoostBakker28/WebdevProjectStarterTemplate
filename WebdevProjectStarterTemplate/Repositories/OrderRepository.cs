@@ -11,7 +11,7 @@ namespace WebdevProjectStarterTemplate.Repositories
             return new DbUtils().GetDbConnection();
         }
         
-        public IEnumerable<Order> Get(int TableID)
+        public IEnumerable<Order> Get(int TableID) //Alle bestellingen van 1 tafel ophalen
         {
             string sql = "SELECT * FROM tableOrder WHERE TableID = @TableID ORDER BY Name ASC";
 
@@ -19,7 +19,7 @@ namespace WebdevProjectStarterTemplate.Repositories
             var order = connection.Query<Order>(sql, new { TableID });
             return order;
         }
-        public IEnumerable<Order> GetAllOrders()
+        public IEnumerable<Order> GetAllOrders() // alle bestellingen ophalen
         {
             string sql = "Select * From tableOrder Order By TableID ASC";
 
@@ -59,7 +59,7 @@ namespace WebdevProjectStarterTemplate.Repositories
             connection.Execute(sql, new { TableID, ProductID, Amount });
         }
 
-        public void AllesBetalen(int TableID)
+        public void AllesBetalen(int TableID) //Geen comment nodig volgens mij
         {
             string sql = "Update tableorder SET AmountPaid = Amount Where TableID = @TableID";
 
@@ -67,21 +67,21 @@ namespace WebdevProjectStarterTemplate.Repositories
             connection.Execute(sql, new { TableID });
         }
 
-        public void DeelsBetalen(int TableID)
+        public void DeelsBetalen(int TableID) //Hier ook niet
         {
             string sql = "Update tableOrder SET AmountPaid = AmountPaid + AmountWantsToPay Where TableID = @TableID AND AmountWantsToPay <= Amount - AmountPaid";
             using var connection = GetConnection();
             connection.Execute(sql, new { TableID });
         }
 
-        public void Add1ToPay(int TableID, int ProductID, int AmountWantsToPay)
+        public void Add1ToPay(int TableID, int ProductID, int AmountWantsToPay) //Product toevoegen die je wilt betalen
         {
             string sql = "Update tableOrder Set AmountWantsToPay = AmountWantsToPay+1 WHERE TableID = @TableID AND ProductID = @ProductID AND AmountWantsToPay < Amount - AmountPaid";
 
             using var connection = GetConnection();
             connection.Execute(sql, new { TableID, ProductID, AmountWantsToPay });
         }
-        public void Remove1ToPay(int TableID, int ProductID, int AmountWantsToPay)
+        public void Remove1ToPay(int TableID, int ProductID, int AmountWantsToPay) //Product verwijderen die je niet wilt betalen
         {
                 string sql = "Update tableOrder Set AmountWantsToPay = AmountWantsToPay-1 WHERE TableID = @TableID AND ProductID = @ProductID AND AmountWantsToPay > 0";
 

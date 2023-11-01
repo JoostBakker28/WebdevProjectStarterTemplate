@@ -3,12 +3,12 @@
 @{
     if (Model.SelectedTableID != null)
     {
-        Response.Cookies.Append("SelectedTable", Model.SelectedTableID);  //Cookies yum, yum!
+        Response.Cookies.Append("SelectedTable", Model.SelectedTableID);  
     }
 
-    if (Model.SelectedTableID == null) //Wanneer Model.Table niet is ingesteld crasht de site omdat Regex resultString NULL doorgeeft aan GET
+    if (Model.SelectedTableID == null) 
     {
-        Model.SelectedTableID = Request.Cookies["SelectedTable"]; //Er moet een getal in de omschrijving staan, het getal 0 wordt NIET gebruikt als TableID (autoincrement is al voorbij TableID 1)
+        Model.SelectedTableID = Request.Cookies["SelectedTable"]; 
     }
 }
  @{
@@ -40,7 +40,7 @@
                         @order.Name
                     </td>
                     <td>
-                        @order.ProductPrice
+                        €@order.ProductPrice
                     </td>
                     <td>
                         @order.AmountPaid/@order.Amount

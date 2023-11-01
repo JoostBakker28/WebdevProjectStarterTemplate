@@ -11,7 +11,7 @@ public class ProductRepository
         return new DbUtils().GetDbConnection();
     }
     
-    public IEnumerable<Product> GetProductWithCategory()
+    public IEnumerable<Product> GetProductWithCategory() //Product ophalen met bijbehorende categorie
     {
         string sql = @"    SELECT * 
                             FROM Product as P

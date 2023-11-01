@@ -11,7 +11,7 @@ namespace WebdevProjectStarterTemplate.Repositories
             return new DbUtils().GetDbConnection();
         }
 
-        public IEnumerable<Table>Get()
+        public IEnumerable<Table>Get() //Tafels ophalen
         {
             string sql = "Select * From webdevproject.Tafels";
 

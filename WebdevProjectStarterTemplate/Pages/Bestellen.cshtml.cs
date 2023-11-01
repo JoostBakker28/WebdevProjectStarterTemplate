@@ -12,7 +12,7 @@ namespace WebdevProjectStarterTemplate.Pages
     {
 
         public IEnumerable<Models.Table> TableList { get { return new TableRepository().Get(); } }//Haal alle tafels op en zet ze in een lijst
-        public IEnumerable<Category> Categories { get { return new CategoryRepository().GetCategoriesWithProducts(); } }
+        public IEnumerable<Category> Categories { get { return new CategoryRepository().GetCategoriesWithProducts(); } } 
         public IEnumerable<Order> OrdersList { get
             {
                 string? result;
@@ -37,7 +37,7 @@ namespace WebdevProjectStarterTemplate.Pages
         public string Category { get; set; } = null!;
 
 
-        public IActionResult OnGet(string table)
+        public IActionResult OnGet(string table) //Selected Table instellen en in de cookie zetten
         {
             if (this.SelectedTableID != null)
             {

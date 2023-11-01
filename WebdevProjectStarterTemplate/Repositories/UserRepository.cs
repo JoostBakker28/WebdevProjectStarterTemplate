@@ -13,7 +13,7 @@ namespace WebdevProjectStarterTemplate.Repositories
             return new DbUtils().GetDbConnection();
         }
 
-        public User Get(string Email, string wachtwoord)
+        public User Get(string Email, string wachtwoord) //Check of de inlog klopt
         {
             if (Email != null && wachtwoord != null)
             {
@@ -29,7 +29,7 @@ namespace WebdevProjectStarterTemplate.Repositories
             }
         }
 
-        public void AddUser(string Email, string wachtwoord)
+        public void AddUser(string Email, string wachtwoord) //Registratie verwerken
         {
             try
             {
