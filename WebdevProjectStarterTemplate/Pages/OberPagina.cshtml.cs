@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using WebdevProjectStarterTemplate.Models;
 using WebdevProjectStarterTemplate.Repositories;
@@ -36,23 +37,20 @@ namespace WebdevProjectStarterTemplate.Pages
         {
             new OrderRepository().RemoveFromOrder(TableID, ProductID);
         }
-
-        public IActionResult OnGet(string table)
+        public User user = null;
+        public IActionResult OnGet(string table) //Checkt of er daadwerkelijk is ingelogd, voordat de oberpagina wordt geopend
         {
-            if (this.SelectedTableID != null)
+            try { user = JsonSerializer.Deserialize<User>(HttpContext.Session.Get("User")); }
+            catch { user = null; }       
+            if (user == null) //als je niet ingelogd bent wordt je terug gestuurd naar het inlog scherm
             {
-                Response.Cookies.Append("SelectedTable", table);
-                return Page();
-            }
-            else if (table == null && Request.Cookies["SelectedTable"] != null)
-            {
-                this.SelectedTableID = Request.Cookies["SelectedTable"];
-                return RedirectToPage("/OberPagina", new { table = this.SelectedTableID });
-            }
+                return RedirectToPage("/Index");
+    }
             else
             {
                 return Page();
-            }
+}
+
         }
     }
 }

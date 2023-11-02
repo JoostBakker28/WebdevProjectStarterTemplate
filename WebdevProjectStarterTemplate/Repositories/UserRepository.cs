@@ -18,7 +18,7 @@ namespace WebdevProjectStarterTemplate.Repositories
             if (Email != null && wachtwoord != null)
             {
                 string sql = "SELECT * From webdevproject.Users \r\nwhere Email = @Email AND Wachtwoord = @wachtwoord;";
-
+             
                 using var connection = GetConnection();
                 var gebruiker = connection.QuerySingle<User>(sql, new { Email, wachtwoord });
                 return gebruiker;

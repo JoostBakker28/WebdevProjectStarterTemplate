@@ -35,7 +35,7 @@ public class IndexModel : PageModel
             }
             else
             {
-                ErrorMessage = "Email of wachtwoord is onjuist";
+                ErrorMessage = "Email of wachtwoord niet ingevuld";
                 return Page();
             }
         }
